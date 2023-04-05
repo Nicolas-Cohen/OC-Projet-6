@@ -186,3 +186,63 @@ footer nav ul {
 	margin: 2em
 }
 
+/* Ajouté par Nicolas */
+.container-btn {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.container-btn button {
+	padding: 8px 20px 8px 20px;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	background-color: transparent;
+	font-family: 'Syne';
+	font-size: 16px;
+	color: #1D6154;
+}
+
+.button-selected {
+	background-color: #1D6154!important;
+	color: white!important;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+}
+
+.login {
+	padding-top: 100px;
+	padding-bottom: 300px;
+}
+
+#password-forget {
+	text-decoration: underline;
+}
+
+#error-message {
+    color: red;
+	margin-bottom: 25px;
+}
+
+#loginButton {
+	font-size: 16px;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.editor-bar {
+	background-color: black;
+	font-size: 300px;
+}
+
+.edit {
+	display: flex;
+	gap: 10px;
+	margin-left: 30px;
+	margin-top: 10px;
+}
