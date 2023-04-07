@@ -14,7 +14,6 @@ function appendWork (travaux) {
     });
 }
 
-
 function createImageWithCaption(src, alt, caption) {
   const figure = document.createElement('figure');
   const image = document.createElement('img');
@@ -48,35 +47,80 @@ function createFilter(catTravaux, travaux, cats ) {
   filterContainer.append(button)
 }
 
-
 function editorMode() {
   const loginButton = document.querySelector('#loginButton');
   const filtersButton = document.querySelector('.container-btn');
-  const editOne = document.querySelector('#editOne');
-  const editTwo = document.querySelector('#editTwo');
 
-  const editorBar = document. createElement ('div');
-  editorBar.className = 'editor-bar';
+  const editorBar = document.createElement('div');
+  editorBar.className = 'editor-bar';  
 
   const token = sessionStorage.getItem('token');
-  const isLogged = token !== null;
+  const isLogged = token !== null;  
+
   if (isLogged) {
     console.log('Connected');
-    editOne.innerHTML = '<div class = \'edit\'><i class = \' fa-regular fa-pen-to-square \'></i>modifier<div>';
     editorBar.innerHTML = '<i class = \' fa-regular fa-pen-to-square \'></i> <p>Mode édition <span>publier les changements</span></p>';
+    document.body.prepend(editorBar);
     loginButton.innerText = 'logout';
-    filtersButton.innerHTML = '';
+    filtersButton.innerHTML = '';  
+
+    // MODALE
+    let modal = null;
+
+    const openModal = function () {
+    modal = document.querySelector('#modal1')
+    modal.style.display = null
+    modal.removeAttribute('aria-hidden')
+    modal.setAttribute('aria-modal','true')
+    modal.addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation)
+    }
+
+    
+
+    const closeModal = function () {
+    if (modal === null) return
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true')
+    modal.removeAttribute('aria-modal')
+    modal.removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
+    modal = null
+    }
+
+    const stopPropagation = function (e) {
+    e.stopPropagation()
+    }
+
+    window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+    closeModal(e)
+    }
+    })
+
+    const projectContainerEdit = document.getElementById('modifier-projet-container')
+
+    const editLink = document.createElement('a')
+    const editIcon = document.createElement('i')
+    editIcon.classList.add('fa-regular' , 'fa-pen-to-square')
+    editLink.append(editIcon , 'modifier')
+    editLink.href = '#'
+    editLink.addEventListener('click' , function() {
+    openModal()
+    })
+    projectContainerEdit.appendChild(editLink)
+    // FIN MODALE
+ 
     loginButton.addEventListener('click', () => {
       sessionStorage.removeItem('token');
       sessionStorage.removeItem('userId');
     });
   } else {
     loginButton.innerText = 'login';
-
   }
 }
-
-
 
 (async () => {
   let travaux = await (await (fetch("http://localhost:5678/api/works"))).json(); // recuperation de la liste des travaux et qui est de type tableau.
@@ -86,6 +130,6 @@ function editorMode() {
   createFilter({id:null, name:'Tous'}, travaux, categoriesTravaux)
   categoriesTravaux.forEach(cat => {
   createFilter (cat, travaux, categoriesTravaux)
-  editorMode();
   })
+  editorMode();
 })();
