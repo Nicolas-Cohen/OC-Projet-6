@@ -29,6 +29,7 @@
 		<figure>
 		<img src="./assets/images/sophie-bluel.png" alt="">
 		<a href="#modal1" id="editOne" class="js-modal"></a>
+		<span id="modifier-photo-container">modifier</span>
 		</figure>
 		<article>
 			<a href="#modal1" id="editThree" class="js-modal"></a>
@@ -62,16 +63,37 @@
 
 
 	<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;" >
-		<div class="modal-wrapper js-modal-stop">
+		<div class="modal-wrapper js-modal-stop" id="js-modal-first">
 			<a href="#"><i class="fa-solid fa-xmark js-modal-close"></i></a>
 			<p id="titlemodal">Galerie photo</p>
-			<div id="modalContent"></div>
+			<div class="projets-modal"></div>
 			<input class="add-photo" type="submit" value="Ajouter une photo">
 			<p class="delete-galery">Supprimer la galerie</p>
 		</div>
+		<div class="modal-wrapper js-modal-stop-two" id="js-modal-add-project" style="display:none;">
+			<a href="#"><i class="fa-solid fa-xmark js-modal-close-two"></i></a>
+			<a href="#"><i class="fa-solid fa-arrow-left js-modal-return"></i></a>
+			<p id="titlemodal">Ajout photo</p>
+			<form class="modal-form" action="#" method="post">
+				<div class="select-photo">
+					<i class="fa-sharp fa-regular fa-image"></i>
+					<label for="photo-input" class="file-upload">+ Ajouter photo</label>
+					<input id="photo-input" type="file">
+					<p>jpg, png : 4mo max</p>	
+				</div>
+				<label for="title-photo">Titre</label>
+				<input type="text" name="title" id="title-photo">
+				<label for="category">Catégorie</label>
+				<select id="category" name="category">
+					<option value="option0"></option>
+					<option value="option1">Objets</option>
+					<option value="option2">Appartements</option>
+					<option value="option3">Hôtels & restaurants</option>
+				</select>
+				<input id="valider-photo" type="submit" value="Valider">
+			</form>	
+		</div>
 	</aside>
-
-
 </main>
 
 <footer>
