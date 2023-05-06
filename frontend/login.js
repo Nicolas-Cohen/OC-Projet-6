@@ -25,7 +25,7 @@ loginForm.addEventListener('submit', async (event) => {
     sessionStorage.setItem('token', token.token);
     sessionStorage.setItem('userId', token.userId);
 
-    // redirige l'utilisateur vers la page d'accueil  
+    // Redirige l'utilisateur vers la page d'accueil  
     window.location.href = 'index.html';
 
   } else {
