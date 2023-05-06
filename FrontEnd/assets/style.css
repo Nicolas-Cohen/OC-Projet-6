@@ -233,6 +233,11 @@ nav a {
 	font-size: 16px;
 	margin-left: 10px;
 	margin-right: 5px;
+	font-size: 16.8px;
+}
+
+#projetsButton {
+	font-size: 16.8px;
 }
 
 .editor-bar {
