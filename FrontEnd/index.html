@@ -5,7 +5,6 @@
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	<link rel="stylesheet" href="https://kit.fontawesome.com/7d6b460f7a.css" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
@@ -28,11 +27,10 @@
 	<section id="introduction">
 		<figure>
 		<img src="./assets/images/sophie-bluel.png" alt="">
-		<a href="#modal1" id="editOne" class="js-modal"></a>
-		<span id="modifier-photo-container">modifier</span>
+		<span id="modifier-projet-container-two"></span>
 		</figure>
 		<article>
-			<a href="#modal1" id="editThree" class="js-modal"></a>
+			<span id="modifier-projet-container-one"></span>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -42,7 +40,7 @@
 	<section id="portfolio">
 		<div class="mesProjets">
 			<h2>Mes Projets</h2>
-			<span id="modifier-projet-container"></span>
+			<span id="modifier-projet-container-three"></span>
 		</div>
 		<div class="container-btn"></div>
 		<div class="projets"></div>
@@ -61,7 +59,6 @@
 		</form>
 	</section>
 
-
 	<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;" >
 		<div class="modal-wrapper js-modal-stop" id="js-modal-first">
 			<a href="#"><i class="fa-solid fa-xmark js-modal-close"></i></a>
@@ -74,26 +71,28 @@
 			<a href="#"><i class="fa-solid fa-xmark js-modal-close-two"></i></a>
 			<a href="#"><i class="fa-solid fa-arrow-left js-modal-return"></i></a>
 			<p id="titlemodal">Ajout photo</p>
-			<form class="modal-form" action="#" method="post">
+			<form class="modal-form">
 				<div class="select-photo">
 					<i class="fa-sharp fa-regular fa-image"></i>
 					<label for="photo-input" class="file-upload">+ Ajouter photo</label>
-					<input id="photo-input" type="file">
+					<input id="photo-input" type="file" name="image">
 					<p>jpg, png : 4mo max</p>	
 				</div>
+				<div class="imageFormDisplay"></div>
 				<label for="title-photo">Titre</label>
 				<input type="text" name="title" id="title-photo">
 				<label for="category">Catégorie</label>
 				<select id="category" name="category">
-					<option value="option0"></option>
-					<option value="option1">Objets</option>
-					<option value="option2">Appartements</option>
-					<option value="option3">Hôtels & restaurants</option>
+					<option value="default"></option>
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hôtels & restaurants</option>
 				</select>
-				<input id="valider-photo" type="submit" value="Valider">
+				<button id="valider-photo" type="button">Valider</button>
 			</form>	
 		</div>
 	</aside>
+
 </main>
 
 <footer>

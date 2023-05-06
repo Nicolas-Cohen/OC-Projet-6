@@ -265,7 +265,12 @@ nav a {
 	justify-content: center;
 }
 
-#editOne {
+#modifier-projet-container-one {
+	display: flex;
+	margin-bottom: 25px;
+}
+
+#modifier-projet-container-two {
 	display: flex;
 	margin-left: 60px;
 	margin-top: 10px;
@@ -277,34 +282,18 @@ nav a {
 	gap: 30px;
 }
 
-#editTwo {
+#modifier-projet-container-three {
 	display: flex;
 	margin-top: 10px;
 }
 
 a {
-
 	text-decoration: none;
 	color: black;
 	font-size: 16px;
 }
 
-.fa-xmark {
-	margin-right: 20px;
-}
-
-#editThree {
-	display: flex;
-	margin-bottom: 25px;
-}
-
-.js-modal {
-	text-decoration: none;
-	color: black;
-	font-size: 16px;
-}
-
-.js-modal i {
+.fa-pen-to-square {
 	margin-right: 10px;
 }
 
@@ -336,6 +325,10 @@ a {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 40px;
+}
+
+.fa-xmark {
+	margin-right: 20px;
 }
 
 .js-modal-close {
@@ -479,4 +472,12 @@ a {
 .select-photo > p {
 	text-align: center;
 	padding-bottom: 20px;
+}
+
+.valid {
+	color: green;
+}
+
+#photo-input > label {
+	width: 30%;
 }
