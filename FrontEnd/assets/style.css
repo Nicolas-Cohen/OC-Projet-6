@@ -486,3 +486,8 @@ a {
 #photo-input > label {
 	width: 30%;
 }
+
+#error-message-modal {
+	color: red;
+	margin-bottom: 10px;
+}

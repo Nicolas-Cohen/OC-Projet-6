@@ -82,21 +82,6 @@ function createFilter(catTravaux, travaux, cats) {
   filterContainer.append(button)
 }
 
-// Fonction qui remplit l'élément HTML divGallery avec les images des travaux en question :
-function appendWork(travaux) {
-  // On vide le contenu HTML de l'élément divGallery
-  divGallery.innerHTML = '';
-  // Pour chaque travail dans le tableau travaux, on crée une figure 
-  travaux.forEach(travail => {
-    const figure = createImageWithCaption(travail.imageUrl, travail.title, travail.title);
-    divGallery.appendChild(figure);
-    // On ajoute un événement qui affiche le titre du travail dans la console
-    figure.addEventListener('click', () => {
-      console.log(travail.title);
-    })
-  });
-}
-
 // Permet d'afficher les travaux et les filtres sur l'index lorsque l'utilisateur est déconnecté
 (async () => {
   // On attend de récupérer les travaux et les catégories depuis le serveur
@@ -264,6 +249,10 @@ function appendWork(travaux) {
     const validerPhoto = document.querySelector('#valider-photo');
     // Sélectionne le formulaire modal
     const modalForm = document.querySelector('.modal-form');
+
+    // Sélectionne l'élément qui affichera les messages d'erreur
+    const errorMessageModal = document.querySelector('#error-message-modal');
+
     // Ajoute un écouteur d'événements sur le bouton de validation de la photo
     validerPhoto.addEventListener('click', async (e) => {
       e.preventDefault(); // Empêche le comportement par défaut de l'événement
@@ -273,6 +262,13 @@ function appendWork(travaux) {
       // Récupère le titre et la catégorie saisis par l'utilisateur
       const titre = document.querySelector('#title-photo').value;
       const categorie = document.querySelector('#category').value;
+
+      // Vérifie que tous les champs obligatoires sont remplis
+      if (!image || !titre || !categorie) {
+        errorMessageModal.textContent = 'Veuillez remplir tous les champs obligatoires.';
+        return;
+      }
+
       // Crée un objet FormData pour envoyer les données au serveur
       const formData = new FormData();
       formData.append('image', image);
